@@ -1,40 +1,43 @@
 import 'dart:math';
 
 import 'package:flutter/material.dart';
+import 'package:get/get.dart';
+import 'package:loan_calculator/controller/controller.dart';
 import 'package:loan_calculator/widget/AmountWidget.dart';
 import 'package:loan_calculator/widget/ScoreWidget.dart';
 import 'package:loan_calculator/widget/termWidget.dart';
 import 'package:loan_calculator/widget/Txt.dart';
 import 'package:loan_calculator/widget/color.dart';
 
-class MyHomePage extends StatefulWidget {
-  @override
-  _MyHomePageState createState() => _MyHomePageState();
-}
+class MyHomePage extends StatelessWidget {
+//   @override
+//   _MyHomePageState createState() => _MyHomePageState();
+// }
 
-class _MyHomePageState extends State<MyHomePage> {
+// class _MyHomePageState extends State<MyHomePage> {
   String payment = '0.00';
   String x = '0.00';
 
-  void calculate() {
-    double a = value; //amount
-    double r = 0.06;
-    double n = term ;
-    double p = a * (r / n);
+  // void calculate() {
+  //   double a = value; //amount
+  //   double r = 0.06;
+  //   double n = term ;
+  //   double p = a * (r / n);
 
-    //double p = a / ((pow((1 + r), n) - 1)) / (r * pow((1 + r), n));
-    setState(() {
-      String pay = p.toStringAsFixed(2);
-      payment = pay;
-    });
-  }
+  //   //double p = a / ((pow((1 + r), n) - 1)) / (r * pow((1 + r), n));
+  //   setState(() {
+  //     String pay = p.toStringAsFixed(2);
+  //     payment = pay;
+  //   });
+  // }
 
-
+ Controller crt = Get.put(Controller());
   @override
   Widget build(BuildContext context) {
     final width = MediaQuery.of(context).size.width;
     final hight = MediaQuery.of(context).size.height;
     return Scaffold(
+     floatingActionButton: FloatingActionButton(onPressed:() => crt.incresment()),
       backgroundColor: black,
       body: Column(
         children: [
@@ -45,7 +48,7 @@ class _MyHomePageState extends State<MyHomePage> {
             child: Column(
               children: [
                 Padding(
-                  padding: const EdgeInsets.only(top: 60, bottom: 20),
+                  padding: const EdgeInsets.only(top: 30, bottom: 20),
                   child: Txt(
                     text: 'Loan Calculator',
                     size: 20.0,
@@ -87,12 +90,13 @@ class _MyHomePageState extends State<MyHomePage> {
                             size: 12,
                             fontWeight: FontWeight.w600,
                           ),
-                          Txt(
-                            text: '4.9%',
+                       Obx(() =>   Txt(
+                            text: '${crt.counter.value}%',
                             color: grey,
                             size: 12,
                             fontWeight: FontWeight.w600,
                           ),
+                       )
                         ],
                       ),
                       SizedBox(
@@ -149,8 +153,7 @@ class _MyHomePageState extends State<MyHomePage> {
                     borderRadius: BorderRadius.circular(5)),
                 color: white,
                 onPressed: () {
-                  calculate();
-                  
+                  // calculate();
                 },
                 child: Txt(
                   text: 'Start your Application',

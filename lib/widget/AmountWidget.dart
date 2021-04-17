@@ -1,22 +1,19 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_xlider/flutter_xlider.dart';
+import 'package:get/get.dart';
+import 'package:loan_calculator/controller/controller.dart';
 
 import 'Txt.dart';
 import 'color.dart';
 
-double value = 12000;
 
-class Amount extends StatefulWidget {
-  @override
-  _AmountState createState() => _AmountState();
-}
 
-class _AmountState extends State<Amount> {
-    
-
+class Amount extends StatelessWidget {
+  
 
   @override
   Widget build(BuildContext context) {
+    Controller crt = Get.put(Controller());
     return Container(
         child: Column(children: [
       Row(
@@ -27,15 +24,22 @@ class _AmountState extends State<Amount> {
             size: 17,
             fontWeight: FontWeight.w600,
           ),
-          Txt(
-            text: '\$${value.round().toString()}',
-            size: 27,
-          )
-        ],
+        // GetBuilder<Controller>(
+        //   init: crt,
+        //   builder: (value) =>Txt(
+        //     text: '\$${crt.amount}',
+        //     size: 27,
+        //   ), 
+        //   ) 
+        Obx(() => Txt(
+             text: '\$${crt.amount.value}',
+             size: 27,
+           ), ),
+        
+         ],
       ),
       FlutterSlider(
-        values: [value],
-        
+        values: [crt.amount.value],
         min: 3000,
         max: 20000,
         trackBar: FlutterSliderTrackBar(
@@ -46,9 +50,9 @@ class _AmountState extends State<Amount> {
           activeTrackBarHeight: 9,
         ),
         onDragging: (handlerIndex, lowerValue, upperValue) {
-          setState(() {
-            value = lowerValue;
-          });
+          crt.amountSlider(lowerValue);
+          // controller.amount = lowerValue.obs;
+           print(crt.amount);
         },
       ),
       Row(
