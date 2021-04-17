@@ -1,6 +1,9 @@
 # loan_calculator
 
-A new Flutter project.
+Flutter project. 
+
+
+![Screenshot_20210417_205841_com example loan_calculator](https://user-images.githubusercontent.com/78311079/115123947-d9686700-9fbf-11eb-9038-1cb5e9f6a8bf.jpg) 
 
 ## Getting Started
 
