@@ -2,7 +2,8 @@
 
 Flutter project. 
 
-![Screenshot_20210417_205649_com bale bmi bmi](https://user-images.githubusercontent.com/78311079/115123889-7e367480-9fbf-11eb-9e03-09d9b93ffe95.jpg) 
+
+![Screenshot_20210417_205841_com example loan_calculator](https://user-images.githubusercontent.com/78311079/115123947-d9686700-9fbf-11eb-9038-1cb5e9f6a8bf.jpg) 
 
 ## Getting Started
 
